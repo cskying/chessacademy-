@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Best Players - Chess Academy</title>
+<!-- Google Fonts: Inter, Source Serif 4, JetBrains Mono -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:wght@600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#2f3131",
+                    "on-tertiary-container": "#838484",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "on-surface": "#1a1c1c",
+                    "surface-tint": "#5e5e5e",
+                    "tertiary": "#000000",
+                    "on-primary-fixed": "#1b1b1b",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#e4e2e2",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "outline": "#7e7576",
+                    "tertiary-fixed": "#e2e2e2",
+                    "error-container": "#ffdad6",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "surface-container-low": "#f3f3f3",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "on-background": "#1a1c1c",
+                    "background": "#f9f9f9",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e2e2e2",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#e1dfdf",
+                    "surface": "#f9f9f9",
+                    "on-surface-variant": "#4c4546",
+                    "surface-container-high": "#e8e8e8",
+                    "secondary-fixed-dim": "#c7c6c6",
+                    "surface-container": "#eeeeee",
+                    "surface-dim": "#dadada",
+                    "inverse-primary": "#c6c6c6",
+                    "primary-container": "#1b1b1b",
+                    "on-primary-fixed-variant": "#474747",
+                    "tertiary-container": "#1a1c1c",
+                    "on-secondary-fixed-variant": "#464747",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "secondary": "#5e5e5e",
+                    "primary": "#000000",
+                    "primary-fixed": "#e2e2e2",
+                    "on-primary-container": "#848484",
+                    "surface-container-highest": "#e2e2e2",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f9f9f9",
+                    "on-secondary-container": "#626262",
+                    "outline-variant": "#cfc4c5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "max-width": "1200px",
+                    "unit": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-md-mobile": ["\"Source Serif 4\""],
+                    "body-sm": ["Inter"],
+                    "title-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["\"Source Serif 4\""],
+                    "headline-md": ["\"Source Serif 4\""],
+                    "label-mono": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-md-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-mono": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .chess-grid-bg {
+            background-image: linear-gradient(45deg, #f3f3f3 25%, transparent 25%), 
+                              linear-gradient(-45deg, #f3f3f3 25%, transparent 25%), 
+                              linear-gradient(45deg, transparent 75%, #f3f3f3 75%), 
+                              linear-gradient(-45deg, transparent 75%, #f3f3f3 75%);
+            background-size: 40px 40px;
+            background-position: 0 0, 0 20px, 20px -20px, -20px 0px;
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface min-h-screen flex flex-col selection:bg-secondary-container">
+<!-- TopNavBar -->
+<nav class="bg-surface border-b border-outline-variant fixed top-0 left-0 right-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto h-16">
+<div class="flex items-center gap-8">
+<span class="font-headline-md text-headline-md font-bold text-primary">Chess Academy</span>
+<div class="hidden md:flex gap-6 items-center">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Home</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">How to Play</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Watch a Tutorial</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-medium" href="#">Best Players</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="hidden sm:block text-on-surface font-medium hover:text-primary transition-colors">Sign In</button>
+<button class="bg-primary text-on-primary px-6 py-2 font-medium transition-all hover:opacity-90 active:scale-95">Register</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-grow pt-24 pb-12 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto w-full">
+<!-- Hero Header Section -->
+<header class="mb-12">
+<h1 class="font-display-lg text-display-lg mb-4 text-primary">Global Leaderboard</h1>
+<p class="font-body-md text-on-surface-variant max-w-2xl">
+                Behold the tactical masters of our academy. Rankings are updated in real-time based on ELO performance, tournament wins, and strategic consistency.
+            </p>
+</header>
+<!-- Bento Grid Stats / Features -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<!-- Featured Grandmaster Card -->
+<div class="md:col-span-2 bg-surface-container-lowest border border-outline-variant p-8 flex flex-col justify-between relative overflow-hidden group">
+<div class="relative z-10">
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest block mb-2">Player of the Month</span>
+<h2 class="font-headline-md text-headline-md mb-4">Magnus V.</h2>
+<div class="flex gap-4 items-center">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 text-label-mono font-label-mono rounded">ELO 2842</span>
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 text-label-mono font-label-mono rounded">W/L: 94%</span>
+</div>
+</div>
+<div class="mt-8 relative z-10">
+<button class="bg-primary text-on-primary px-6 py-2 font-medium hover:opacity-90 flex items-center gap-2">
+                        View Profile <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Abstract BG Decor -->
+<div class="absolute -right-12 -bottom-12 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[200px]" style="font-variation-settings: 'FILL' 1;">chess</span>
+</div>
+</div>
+<!-- Mini Stats Card 1 -->
+<div class="bg-surface-container-low border border-outline-variant p-6 flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">groups</span>
+<span class="font-display-lg text-display-lg leading-tight">12.4k</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Active Scholars</span>
+</div>
+<!-- Mini Stats Card 2 -->
+<div class="bg-surface-container-low border border-outline-variant p-6 flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined text-primary text-4xl mb-2">military_tech</span>
+<span class="font-display-lg text-display-lg leading-tight">158</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Grandmasters</span>
+</div>
+</div>
+<!-- Leaderboard Table Section -->
+<section class="bg-surface-container-lowest border border-outline-variant overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-surface">
+<h3 class="font-title-sm text-title-sm">Current Rankings</h3>
+<div class="flex items-center gap-2 border-b border-outline w-full sm:w-auto pb-1">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 font-body-sm text-on-surface w-full" placeholder="Search player..." type="text"/>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container font-label-mono text-label-mono text-on-surface-variant">
+<th class="px-6 py-4 font-medium uppercase tracking-wider w-20">Rank</th>
+<th class="px-6 py-4 font-medium uppercase tracking-wider">Player</th>
+<th class="px-6 py-4 font-medium uppercase tracking-wider hidden md:table-cell">Status</th>
+<th class="px-6 py-4 font-medium uppercase tracking-wider">Rating</th>
+<th class="px-6 py-4 font-medium uppercase tracking-wider hidden lg:table-cell">Win Rate</th>
+<th class="px-6 py-4 font-medium uppercase tracking-wider text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Rank 1 -->
+<tr class="hover:bg-surface-container-low transition-colors group">
+<td class="px-6 py-6">
+<span class="bg-primary text-on-primary w-8 h-8 flex items-center justify-center font-label-mono font-bold">1</span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A sophisticated studio portrait of a young chess grandmaster with focused eyes, wearing a sharp black turtleneck. The lighting is high-contrast and minimalist, set against a clean white and gray background to match the modern light-mode design system. The mood is calm and intellectual, capturing professional excellence." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCz0KTFoTQTHI-K0y-UNunWW2ExRNuiYfnLGehGy9iEbTgnox2BkkIu7Z0aJNwYJr9ZnlVpnuFuQbaATYIyuwSqK4lELNLDQS_tOv9zPy5Lk5wMduTULE_0FkEB54oubVawq5NzzfLlZ-Gw_zsncLve7I-t0BDytiDkn2eLwsgTYjuibfn3rGDacoSkieBpxX1E59Ym7OuPo5kc5uSN92Qm9cW-ucY7ywlFSeLn4wt2zJDcpnL4SJx7EI0hGWxXzmFDbhYfYIu4IM"/>
+</div>
+<div>
+<div class="font-title-sm text-title-sm leading-tight">Elena Kasparov</div>
+<div class="font-body-sm text-on-surface-variant">Grandmaster</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 hidden md:table-cell">
+<span class="flex items-center gap-2 font-label-mono text-label-mono text-on-surface">
+<span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Online
+                                </span>
+</td>
+<td class="px-6 py-6 font-label-mono">
+<span class="text-primary font-bold">2854</span>
+</td>
+<td class="px-6 py-6 hidden lg:table-cell">
+<div class="w-32 h-2 bg-secondary-container">
+<div class="h-full bg-primary" style="width: 82%"></div>
+</div>
+<span class="font-label-mono text-[10px] text-on-surface-variant">82.4%</span>
+</td>
+<td class="px-6 py-6 text-right">
+<button class="text-primary hover:underline font-label-mono uppercase tracking-tighter">Challenge</button>
+</td>
+</tr>
+<!-- Rank 2 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-6">
+<span class="border border-outline text-primary w-8 h-8 flex items-center justify-center font-label-mono">2</span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up professional headshot of a middle-aged chess champion with a thoughtful expression. The style is editorial and high-end, utilizing soft, natural lighting in a bright, modern interior space. The colors are strictly monochrome with deep blacks and ivory whites, projecting a sense of classic authority and timeless strategy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKypXg_f-vTc3xCvqI0AQAaCtkhOaneRRa6eno1O83k4Q41vI0IMGjgr4DpcHg3bCUmx6rHSh4lxC5U5t4G3xnq44Em8wYfW45m9_105y0H5E_89VjTUSqtpTUGdKJFqRbNRL4yTbtAxa52jAOTd57FMnbNEVv9SZhWUPP0wZ33tjlEncQT7bYBhL6KAPjJUC3mZ0VFWWhjpyNsXcGezYcdSfNcIw7a_VwxPreR9Jqluypa9QnKOwdzdMuLO7XOda3XhovPZ1otGA"/>
+</div>
+<div>
+<div class="font-title-sm text-title-sm leading-tight">Arthur Knight</div>
+<div class="font-body-sm text-on-surface-variant">Master Educator</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 hidden md:table-cell">
+<span class="font-label-mono text-label-mono text-on-surface-variant">In Game</span>
+</td>
+<td class="px-6 py-6 font-label-mono">
+<span class="text-primary">2791</span>
+</td>
+<td class="px-6 py-6 hidden lg:table-cell">
+<div class="w-32 h-2 bg-secondary-container">
+<div class="h-full bg-primary" style="width: 75%"></div>
+</div>
+<span class="font-label-mono text-[10px] text-on-surface-variant">75.1%</span>
+</td>
+<td class="px-6 py-6 text-right">
+<button class="text-primary hover:underline font-label-mono uppercase tracking-tighter">Challenge</button>
+</td>
+</tr>
+<!-- Rank 3 -->
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-6 py-6">
+<span class="border border-outline text-primary w-8 h-8 flex items-center justify-center font-label-mono">3</span>
+</td>
+<td class="px-6 py-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A creative portrait of a strategic gamer with a sleek, minimalist aesthetic. The lighting is focused and precise, casting soft shadows that emphasize intellectual depth. The palette adheres to the primary black-and-white theme of the UI, creating a cohesive, high-quality professional look for a digital chess academy leaderboard." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCV8cNw0E91qlIVVP7E0nhf8POgJHpadvrZa34mheAu-1yc6uvqD9d2tjS-xLHF3oL_Ry1_YkHCsV7k7Il1K1ESWN_YRrRGeOucx58A69TcUXbw_VsAYXdd4NlTXOSdiNo3bdVL2zqeAYhnorzYyDpYgG1hzNawMwwCwvUk4qT2_Npb41v66F7wXYlPMe8Wp8eb4q8p-J7AkEuLFkPThUvFi0-gPTBMTyxMC-4H9KqshFuRUJ2U3H5O2bDL8t5BZOXfE3BIUSrzNV0"/>
+</div>
+<div>
+<div class="font-title-sm text-title-sm leading-tight">Sophia Bishop</div>
+<div class="font-body-sm text-on-surface-variant">Rising Star</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-6 hidden md:table-cell">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Idle</span>
+</td>
+<td class="px-6 py-6 font-label-mono">
+<span class="text-primary">2745</span>
+</td>
+<td class="px-6 py-6 hidden lg:table-cell">
+<div class="w-32 h-2 bg-secondary-container">
+<div class="h-full bg-primary" style="width: 68%"></div>
+</div>
+<span class="font-label-mono text-[10px] text-on-surface-variant">68.9%</span>
+</td>
+<td class="px-6 py-6 text-right">
+<button class="text-primary hover:underline font-label-mono uppercase tracking-tighter">Challenge</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination/Load More -->
+<div class="p-6 border-t border-outline-variant flex justify-center bg-surface">
+<button class="border border-outline text-primary px-8 py-2 font-label-mono uppercase tracking-wider hover:bg-surface-container transition-all">
+                    Load More Players
+                </button>
+</div>
+</section>
+<!-- Informational Section - Bottom CTA -->
+<section class="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="chess-grid-bg h-80 border border-outline-variant flex items-center justify-center relative group">
+<img class="w-4/5 h-4/5 object-cover shadow-lg transition-transform duration-500 group-hover:scale-105" data-alt="A top-down artistic shot of a luxury wooden chessboard with minimalist, architectural chess pieces. The board is bathed in soft morning light, creating long shadows that emphasize the 3D form of the pieces. The scene is elegant, clean, and perfectly aligned with a premium editorial design style, focusing on textures and geometric clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD_077i-JGBgHBdSkbB58p5cZgNS7ImjP4zshMehoTqd501nO2A6ioERITVNgM0qE1rXj2uzjwc_1BnkFug5pvfJgy1qyZ9aBuWmGHdnogEwQMD7r-X8zzjY4yczRmrv-ITGWym8nva5LJt08bGUuovQCClsBdZYxFZgZrnDyqGaM06uJLynwfeAV2YoEcED_bZ6-z4j3KPWxXL1k4lDwc9yMMVVr4P0uo3VXzZouoWMPT7m9FYZ8PMc9dmR0j7gu6GRGqCO4D-2PA"/>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md mb-6">Want to see your name here?</h2>
+<p class="font-body-md text-on-surface-variant mb-8">
+                    Our academy provides the tools and tutelage needed to rise through the ranks. From tactical puzzles to grandmaster analysis, your journey to the leaderboard starts with a single move.
+                </p>
+<div class="flex flex-wrap gap-4">
+<button class="bg-primary text-on-primary px-8 py-3 font-medium hover:opacity-90">Start Training</button>
+<button class="border border-outline text-primary px-8 py-3 font-medium hover:bg-surface-container">Learn More</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface border-t border-outline-variant mt-12">
+<div class="w-full py-12 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col items-center md:items-start gap-2">
+<span class="font-headline-md text-headline-md text-primary font-bold">Chess Academy</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-label-mono">© 2024 Chess Academy. All rights reserved.</span>
+</div>
+<div class="flex gap-8">
+<a class="text-on-surface-variant hover:underline transition-all font-label-mono text-label-mono" href="#">About Us</a>
+<a class="text-on-surface-variant hover:underline transition-all font-label-mono text-label-mono" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:underline transition-all font-label-mono text-label-mono" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:underline transition-all font-label-mono text-label-mono" href="#">Contact</a>
+</div>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#"><span class="material-symbols-outlined">forum</span></a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple search interactivity
+        document.querySelector('input[type="text"]').addEventListener('input', function(e) {
+            const term = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('tbody tr');
+            
+            rows.forEach(row => {
+                const name = row.querySelector('.font-title-sm').textContent.toLowerCase();
+                if (name.includes(term)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body></html>

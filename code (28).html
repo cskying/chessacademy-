@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>How to Play | Chess Academy</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Source+Serif+4:wght@600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#2f3131",
+                    "on-tertiary-container": "#838484",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "on-surface": "#1a1c1c",
+                    "surface-tint": "#5e5e5e",
+                    "tertiary": "#000000",
+                    "on-primary-fixed": "#1b1b1b",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#e4e2e2",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "outline": "#7e7576",
+                    "tertiary-fixed": "#e2e2e2",
+                    "error-container": "#ffdad6",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "surface-container-low": "#f3f3f3",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "on-background": "#1a1c1c",
+                    "background": "#f9f9f9",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e2e2e2",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#e1dfdf",
+                    "surface": "#f9f9f9",
+                    "on-surface-variant": "#4c4546",
+                    "surface-container-high": "#e8e8e8",
+                    "secondary-fixed-dim": "#c7c6c6",
+                    "surface-container": "#eeeeee",
+                    "surface-dim": "#dadada",
+                    "inverse-primary": "#c6c6c6",
+                    "primary-container": "#1b1b1b",
+                    "on-primary-fixed-variant": "#474747",
+                    "tertiary-container": "#1a1c1c",
+                    "on-secondary-fixed-variant": "#464747",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "secondary": "#5e5e5e",
+                    "primary": "#000000",
+                    "primary-fixed": "#e2e2e2",
+                    "on-primary-container": "#848484",
+                    "surface-container-highest": "#e2e2e2",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f9f9f9",
+                    "on-secondary-container": "#626262",
+                    "outline-variant": "#cfc4c5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "max-width": "1200px",
+                    "unit": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-md-mobile": ["Source Serif 4"],
+                    "body-sm": ["Inter"],
+                    "title-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Source Serif 4"],
+                    "headline-md": ["Source Serif 4"],
+                    "label-mono": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-md-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-mono": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .piece-movement-card:hover .move-arrow {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .move-arrow {
+            opacity: 0;
+            transform: translateY(4px);
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface border-b border-outline-variant fixed top-0 left-0 right-0 z-50">
+<div class="flex justify-between items-center w-full px-margin-desktop max-w-max-width mx-auto h-16">
+<div class="font-headline-md text-headline-md font-bold text-primary">Chess Academy</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-mono text-label-mono" href="#">Home</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-label-mono text-label-mono opacity-80 transition-opacity" href="#">How to Play</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-mono text-label-mono" href="#">Watch a Tutorial</a>
+<a class="text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 font-label-mono text-label-mono" href="#">Best Players</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="font-label-mono text-label-mono px-4 py-2 hover:opacity-80 transition-opacity">Sign In</button>
+<button class="bg-primary text-on-primary font-label-mono text-label-mono px-6 py-2 rounded-DEFAULT hover:opacity-90 transition-opacity">Register</button>
+</div>
+</div>
+</header>
+<main class="pt-32 pb-24 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
+<!-- Hero Section -->
+<section class="mb-20 text-center max-w-3xl mx-auto">
+<span class="font-label-mono text-label-mono text-secondary mb-4 block tracking-widest">MASTER THE BOARD</span>
+<h1 class="font-display-lg text-display-lg mb-6">The Art of the Move</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+                Chess is a game of perfect information. There is no luck, only strategy. Learn the foundational rules and begin your journey from novice to grandmaster.
+            </p>
+</section>
+<!-- Bento Grid: The Basics -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-24">
+<!-- Objective Card -->
+<div class="md:col-span-8 bg-surface-container-lowest border border-outline-variant p-8 relative overflow-hidden group">
+<div class="relative z-10">
+<h2 class="font-headline-md text-headline-md mb-4">The Objective</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-lg">
+                        The ultimate goal in chess is to <strong>Checkmate</strong> your opponent's King. This happens when the King is in a position to be captured (in check) and there is no way to move out of capture.
+                    </p>
+<div class="flex gap-4">
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-variant rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-[18px]">crown</span>
+<span class="font-label-mono text-label-mono">Checkmate</span>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-variant rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined text-[18px]">timer</span>
+<span class="font-label-mono text-label-mono">Resignation</span>
+</div>
+</div>
+</div>
+<!-- Abstract visual representation -->
+<div class="absolute -right-16 -bottom-16 w-64 h-64 border border-outline-variant rotate-12 opacity-10 group-hover:rotate-45 transition-transform duration-1000"></div>
+<div class="absolute -right-8 -bottom-8 w-64 h-64 border border-outline-variant rotate-12 opacity-10 group-hover:rotate-12 transition-transform duration-1000"></div>
+</div>
+<!-- Setup Card -->
+<div class="md:col-span-4 bg-tertiary text-on-tertiary p-8 flex flex-col justify-between">
+<div>
+<h2 class="font-headline-md text-headline-md mb-4">Board Setup</h2>
+<p class="font-body-sm text-body-sm opacity-80">
+                        The board is placed so that each player has a white (light) square on their right-hand side. The Queen always sits on her own color.
+                    </p>
+</div>
+<div class="mt-8 grid grid-cols-8 gap-1 opacity-40">
+<!-- Mini board visualization -->
+<script>
+                        for(let i=0; i<32; i++) {
+                            document.write(`<div class="aspect-square bg-on-tertiary"></div>`);
+                        }
+                    </script>
+</div>
+</div>
+</div>
+<!-- Section: Piece Movements -->
+<section class="mb-24">
+<div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+<h2 class="font-headline-md text-headline-md">The Royal Guard</h2>
+<p class="font-label-mono text-label-mono text-secondary max-w-xs text-right">EVERY PIECE HAS A UNIQUE PATHWAY TO VICTORY.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Pawn -->
+<div class="piece-movement-card bg-surface-container-lowest border border-outline-variant p-6 hover:border-primary transition-colors">
+<div class="w-12 h-12 flex items-center justify-center bg-background border border-outline-variant mb-6">
+<span class="material-symbols-outlined text-[24px]">lan</span>
+</div>
+<h3 class="font-title-sm text-title-sm mb-2">The Pawn</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Moves forward one square, but captures diagonally. On its first move, it can advance two squares.</p>
+<div class="move-arrow flex items-center gap-2 text-primary">
+<span class="font-label-mono text-label-mono">LEARN CAPTURE RULES</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+<!-- Knight -->
+<div class="piece-movement-card bg-surface-container-lowest border border-outline-variant p-6 hover:border-primary transition-colors">
+<div class="w-12 h-12 flex items-center justify-center bg-background border border-outline-variant mb-6">
+<span class="material-symbols-outlined text-[24px]">chess_knight</span>
+</div>
+<h3 class="font-title-sm text-title-sm mb-2">The Knight</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Moves in an "L" shape: two squares in one direction and then one at a right angle. The only piece that can jump.</p>
+<div class="move-arrow flex items-center gap-2 text-primary">
+<span class="font-label-mono text-label-mono">VIEW L-SHAPES</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+<!-- Bishop -->
+<div class="piece-movement-card bg-surface-container-lowest border border-outline-variant p-6 hover:border-primary transition-colors">
+<div class="w-12 h-12 flex items-center justify-center bg-background border border-outline-variant mb-6">
+<span class="material-symbols-outlined text-[24px]">chess_bishop</span>
+</div>
+<h3 class="font-title-sm text-title-sm mb-2">The Bishop</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Moves as far as it wants, but only diagonally. Each bishop starts on a color and stays there forever.</p>
+<div class="move-arrow flex items-center gap-2 text-primary">
+<span class="font-label-mono text-label-mono">COLOR COMPLEXITY</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+<!-- Rook -->
+<div class="piece-movement-card bg-surface-container-lowest border border-outline-variant p-6 hover:border-primary transition-colors">
+<div class="w-12 h-12 flex items-center justify-center bg-background border border-outline-variant mb-6">
+<span class="material-symbols-outlined text-[24px]">chess_rook</span>
+</div>
+<h3 class="font-title-sm text-title-sm mb-2">The Rook</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Moves as far as it wants horizontally or vertically. Essential for late-game checkmate patterns.</p>
+<div class="move-arrow flex items-center gap-2 text-primary">
+<span class="font-label-mono text-label-mono">CASTLING RULES</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+<!-- Queen -->
+<div class="piece-movement-card bg-surface-container-lowest border border-outline-variant p-6 hover:border-primary transition-colors">
+<div class="w-12 h-12 flex items-center justify-center bg-background border border-outline-variant mb-6">
+<span class="material-symbols-outlined text-[24px]">chess_queen</span>
+</div>
+<h3 class="font-title-sm text-title-sm mb-2">The Queen</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">The most powerful piece. Can move any distance in any direction—vertically, horizontally, or diagonally.</p>
+<div class="move-arrow flex items-center gap-2 text-primary">
+<span class="font-label-mono text-label-mono">OPTIMAL POSITIONING</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+<!-- King -->
+<div class="piece-movement-card bg-surface-container-lowest border border-outline-variant p-6 hover:border-primary transition-colors">
+<div class="w-12 h-12 flex items-center justify-center bg-background border border-outline-variant mb-6">
+<span class="material-symbols-outlined text-[24px]">chess_king</span>
+</div>
+<h3 class="font-title-sm text-title-sm mb-2">The King</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4">Moves only one square in any direction. If your King is lost, the game is over. Protect him at all costs.</p>
+<div class="move-arrow flex items-center gap-2 text-primary">
+<span class="font-label-mono text-label-mono">KING SAFETY</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Visual: Rules Illustration -->
+<section class="mb-24 bg-surface-container-high p-8 md:p-12 relative overflow-hidden">
+<div class="grid grid-cols-1 md:grid-cols-2 items-center gap-12 relative z-10">
+<div class="order-2 md:order-1">
+<div class="aspect-square w-full bg-cover bg-center border border-outline shadow-sm" data-alt="A minimalist overhead view of a premium black and white chessboard in a sunlit library. The lighting is soft and airy, emphasizing the clean lines and sophisticated modern design. Several pieces are positioned strategically to illustrate a move, with subtle graphical overlays showing possible paths. The aesthetic is high-end editorial, monochromatic, and intellectually stimulating." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAhnDpXsGu0WdeZZoDrvAFI-g4ieTAUZz-xyeM83m7-yF4DBETWAIsQRtX0HWpPbLRJn8h6RChWDozA-2TafvWZf8a5O8nLlcMfRIGlf_Z4k2_r3YF8xNSnmimG7BaBnfj798PH03VETJSO0yScNVRGXp1OCw7owKRmS-gJOzjm_0o0xC0nmmPLZmD6VZ0Q9_VoKqeMdkGY56ikZ2pLFLi7zlkCjn6ISbT73aeqfV_s20F5KUSqpUEprTY81JVhq8iLkV2VETr-_Ks')"></div>
+</div>
+<div class="order-1 md:order-2">
+<h2 class="font-headline-md text-headline-md mb-6">Special Rules</h2>
+<ul class="space-y-6">
+<li class="flex gap-4">
+<span class="font-label-mono text-label-mono py-1 px-2 bg-primary text-on-primary h-fit">01</span>
+<div>
+<h4 class="font-title-sm text-title-sm">Castling</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Move your King two squares toward a Rook and place the Rook on the square the King passed over.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="font-label-mono text-label-mono py-1 px-2 bg-primary text-on-primary h-fit">02</span>
+<div>
+<h4 class="font-title-sm text-title-sm">En Passant</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">A special pawn capture that can only occur immediately after a pawn makes a double-step move.</p>
+</div>
+</li>
+<li class="flex gap-4">
+<span class="font-label-mono text-label-mono py-1 px-2 bg-primary text-on-primary h-fit">03</span>
+<div>
+<h4 class="font-title-sm text-title-sm">Promotion</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant">If a pawn reaches the opposite side of the board, it is promoted to any other piece (usually a Queen).</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="border-t border-outline-variant pt-24 text-center">
+<h2 class="font-headline-md text-headline-md mb-8">Ready to test your knowledge?</h2>
+<div class="flex flex-col md:flex-row gap-4 justify-center">
+<button class="bg-primary text-on-primary px-10 py-4 font-label-mono text-label-mono hover:opacity-90 transition-opacity">START YOUR FIRST GAME</button>
+<button class="border border-outline px-10 py-4 font-label-mono text-label-mono hover:bg-surface-container transition-colors">WATCH VIDEO TUTORIAL</button>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface border-t border-outline-variant">
+<div class="w-full py-12 px-margin-desktop max-w-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="font-headline-md text-headline-md text-primary">Chess Academy</div>
+<div class="flex gap-8">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline transition-all" href="#">About Us</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline transition-all" href="#">Terms of Service</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline transition-all" href="#">Contact</a>
+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">
+                © 2024 Chess Academy. All rights reserved.
+            </div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for the piece cards
+        document.querySelectorAll('.piece-movement-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                icon.style.transform = 'scale(1.1)';
+                icon.style.transition = 'transform 0.2s ease';
+            });
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.material-symbols-outlined');
+                icon.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

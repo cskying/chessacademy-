@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Chess Academy | Master the Royal Game</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ba1a1a",
+                    "inverse-surface": "#2f3131",
+                    "on-tertiary-container": "#838484",
+                    "on-tertiary-fixed-variant": "#454747",
+                    "on-surface": "#1a1c1c",
+                    "surface-tint": "#5e5e5e",
+                    "tertiary": "#000000",
+                    "on-primary-fixed": "#1b1b1b",
+                    "on-primary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#e4e2e2",
+                    "on-tertiary-fixed": "#1a1c1c",
+                    "outline": "#7e7576",
+                    "tertiary-fixed": "#e2e2e2",
+                    "error-container": "#ffdad6",
+                    "on-error": "#ffffff",
+                    "primary-fixed-dim": "#c6c6c6",
+                    "surface-container-low": "#f3f3f3",
+                    "tertiary-fixed-dim": "#c6c6c6",
+                    "on-background": "#1a1c1c",
+                    "background": "#f9f9f9",
+                    "inverse-on-surface": "#f1f1f1",
+                    "on-secondary": "#ffffff",
+                    "surface-variant": "#e2e2e2",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#e1dfdf",
+                    "surface": "#f9f9f9",
+                    "on-surface-variant": "#4c4546",
+                    "surface-container-high": "#e8e8e8",
+                    "secondary-fixed-dim": "#c7c6c6",
+                    "surface-container": "#eeeeee",
+                    "surface-dim": "#dadada",
+                    "inverse-primary": "#c6c6c6",
+                    "primary-container": "#1b1b1b",
+                    "on-primary-fixed-variant": "#474747",
+                    "tertiary-container": "#1a1c1c",
+                    "on-secondary-fixed-variant": "#464747",
+                    "on-secondary-fixed": "#1b1c1c",
+                    "secondary": "#5e5e5e",
+                    "primary": "#000000",
+                    "primary-fixed": "#e2e2e2",
+                    "on-primary-container": "#848484",
+                    "surface-container-highest": "#e2e2e2",
+                    "on-tertiary": "#ffffff",
+                    "surface-bright": "#f9f9f9",
+                    "on-secondary-container": "#626262",
+                    "outline-variant": "#cfc4c5"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "margin-desktop": "64px",
+                    "max-width": "1200px",
+                    "unit": "4px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "headline-md-mobile": ["\"Source Serif 4\""],
+                    "body-sm": ["Inter"],
+                    "title-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["\"Source Serif 4\""],
+                    "headline-md": ["\"Source Serif 4\""],
+                    "label-mono": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-md-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "title-sm": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-mono": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background-color: #f9f9f9;
+            color: #1a1c1c;
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 50%, rgba(255,255,255,1) 0%, rgba(249,249,249,1) 100%);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface docked full-width top-0 border-b border-outline-variant z-50 sticky">
+<nav class="flex justify-between items-center w-full px-margin-desktop max-w-max-width mx-auto h-16">
+<div class="font-headline-md text-headline-md font-bold text-primary">
+                Chess Academy
+            </div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-label-mono text-label-mono text-primary border-b-2 border-primary pb-1 hover:text-primary transition-colors duration-200 opacity-80 transition-opacity" href="#">Home</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">How to Play</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Watch a Tutorial</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant font-medium hover:text-primary transition-colors duration-200" href="#">Best Players</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="font-label-mono text-label-mono px-4 py-2 border border-outline hover:bg-surface-container transition-colors">Sign In</button>
+<button class="font-label-mono text-label-mono px-4 py-2 bg-primary text-on-primary hover:opacity-90 transition-opacity">Register</button>
+</div>
+</nav>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex flex-col items-center justify-center text-center px-margin-mobile md:px-margin-desktop hero-gradient overflow-hidden">
+<div class="absolute inset-0 z-0">
+<!-- STITCH_THREEJS_START:ANIMATION_2 class="absolute inset-0 w-full h-full opacity-40" -->
+<div class="absolute inset-0 w-full h-full opacity-40" style="display:block;">
+<script src="https://ajax.googleapis.com/ajax/libs/threejs/r125/three.min.js"></script>
+<div id="threejs-container-ANIMATION_2" style="width:100%;height:100%"></div>
+<script>
+(function() {
+  const container = document.getElementById('threejs-container-ANIMATION_2');
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  const width = container.clientWidth || window.innerWidth;
+const height = container.clientHeight || window.innerHeight;
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+renderer.setSize(width, height);
+container.appendChild(renderer.domElement);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+scene.add(ambientLight);
+const pointLight = new THREE.PointLight(0xffffff, 1);
+pointLight.position.set(5, 5, 5);
+scene.add(pointLight);
+
+// Simple Chess Piece (Pawn-like)
+const group = new THREE.Group();
+
+const baseGeom = new THREE.CylinderGeometry(0.5, 0.5, 0.1, 32);
+const baseMat = new THREE.MeshPhongMaterial({ color: 0x333333 });
+const base = new THREE.Mesh(baseGeom, baseMat);
+group.add(base);
+
+const bodyGeom = new THREE.CylinderGeometry(0.2, 0.4, 0.8, 32);
+const body = new THREE.Mesh(bodyGeom, baseMat);
+body.position.y = 0.45;
+group.add(body);
+
+const headGeom = new THREE.SphereGeometry(0.25, 32, 32);
+const head = new THREE.Mesh(headGeom, baseMat);
+head.position.y = 0.9;
+group.add(head);
+
+scene.add(group);
+camera.position.z = 3;
+
+function animate() {
+    requestAnimationFrame(animate);
+    group.rotation.y += 0.01;
+    renderer.render(scene, camera);
+}
+
+window.addEventListener('resize', () => {
+    const w = container.clientWidth || window.innerWidth;
+    const h = container.clientHeight || window.innerHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+});
+
+animate();
+})();
+</script>
+</div>
+<!-- STITCH_THREEJS_END:ANIMATION_2 -->
+</div>
+<div class="relative z-10 max-w-4xl">
+<span class="font-label-mono text-label-mono uppercase tracking-[0.2em] text-secondary mb-6 block">ESTABLISHED MCMXXIV</span>
+<h1 class="font-display-lg text-display-lg text-primary mb-6">Master the Art of Strategic Dominance</h1>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-2xl mx-auto mb-10">
+                    A timeless sanctuary for the intellectual athlete. From foundational gambits to grandmaster endgame theories, Chess Academy is the definitive destination for those who seek clarity through precision.
+                </p>
+<div class="flex flex-col md:flex-row gap-4 justify-center">
+<button class="bg-primary text-on-primary px-8 py-4 font-body-md font-medium hover:opacity-90 transition-opacity min-w-[200px]">Start Your Journey</button>
+<button class="bg-white border border-outline-variant text-primary px-8 py-4 font-body-md font-medium hover:bg-surface-container-low transition-colors min-w-[200px]">Explore Courses</button>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+<span class="font-label-mono text-[10px] uppercase tracking-widest">Scroll</span>
+<div class="w-[1px] h-12 bg-primary"></div>
+</div>
+</section>
+<!-- Feature Bento Grid -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
+<div class="mb-16">
+<h2 class="font-headline-md text-headline-md text-primary mb-2">The Scholastic Standard</h2>
+<div class="h-[2px] w-12 bg-primary"></div>
+</div>
+<div class="bento-grid">
+<!-- Large Card -->
+<div class="col-span-12 md:col-span-8 bg-white border border-outline-variant p-10 flex flex-col justify-between group overflow-hidden relative">
+<div class="relative z-10">
+<span class="font-label-mono text-label-mono text-secondary mb-4 block">01 / CURRICULUM</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">Interdisciplinary Theory</h3>
+<p class="text-on-surface-variant max-w-md">Our curriculum blends historical analysis with modern engine-driven precision, providing a comprehensive understanding of the 64 squares.</p>
+</div>
+<div class="mt-12 flex items-center gap-2 text-primary font-medium cursor-pointer group">
+<span class="font-label-mono text-label-mono uppercase tracking-wider">Explore syllabus</span>
+<span class="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</div>
+<!-- Decorative Element -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 opacity-[0.03] pointer-events-none">
+<img class="w-full h-full object-contain" data-alt="A high-contrast minimalist illustration of a white marble chess king standing tall on a stark black background, symbolizing leadership and strategy in a modern editorial style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnp2L_w2sMkfrKVncZrvub1q0K5I9yQw0_yFSrygNd0htu9SD5Gm2hRyHNrijmeWSkdyW529DvsLT5N7neg7K5IvGQ2SiGRQkqbekbd5zXxrXT2cSyQgKVxM0ZpfugHPesRXQ-JrJGz1tibj0zUouddJQVVaE5MAWYbZKk3NVTrkPC3436FLrWp3uwlL13TNpHruKqCpcrULPzLjYP6yhIOnHW7PwzS5J1GbYpOpTXVq8ecEZjB_fnkSNtC1XcvpV8NK6bfrU8INY"/>
+</div>
+</div>
+<!-- Small Card -->
+<div class="col-span-12 md:col-span-4 bg-primary text-on-primary p-10 flex flex-col justify-between">
+<div>
+<span class="font-label-mono text-label-mono text-on-primary-container mb-4 block">02 / INTERACT</span>
+<h3 class="font-title-sm text-title-sm mb-4">Live Mentorship</h3>
+<p class="text-on-primary-container text-sm">Direct access to Grandmasters for personalized game analysis and strategic refinement.</p>
+</div>
+<div class="mt-8">
+<span class="material-symbols-outlined text-4xl">record_voice_over</span>
+</div>
+</div>
+<!-- Small Card -->
+<div class="col-span-12 md:col-span-4 bg-surface-container p-10 border border-outline-variant flex flex-col justify-between">
+<div>
+<span class="font-label-mono text-label-mono text-secondary mb-4 block">03 / ANALYSIS</span>
+<h3 class="font-title-sm text-title-sm text-primary mb-4">Neural Engine</h3>
+<p class="text-on-surface-variant text-sm">Leverage custom-tuned AI to dissect your blunders and find the subtle wins you missed.</p>
+</div>
+<div class="mt-8 text-primary">
+<span class="material-symbols-outlined text-4xl">psychology</span>
+</div>
+</div>
+<!-- Medium Card -->
+<div class="col-span-12 md:col-span-8 bg-white border border-outline-variant p-0 overflow-hidden group">
+<div class="flex flex-col md:flex-row h-full">
+<div class="p-10 flex-1 flex flex-col justify-between">
+<div>
+<span class="font-label-mono text-label-mono text-secondary mb-4 block">04 / COMMUNITY</span>
+<h3 class="font-headline-md text-headline-md text-primary mb-4">The Arena</h3>
+<p class="text-on-surface-variant">Join exclusive tournaments designed for every skill level. Compete, analyze, and climb the ranks.</p>
+</div>
+<div class="mt-6">
+<button class="font-label-mono text-label-mono text-primary underline underline-offset-4 hover:opacity-70 transition-opacity">Enter the Lobby</button>
+</div>
+</div>
+<div class="w-full md:w-1/2 h-64 md:h-auto overflow-hidden">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A professional, dimly lit chess hall with multiple boards set up for a tournament. The lighting is focused and warm, highlighting the carved wooden pieces against the dark tables, evoking a sense of quiet competition and focus." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeSxykp6QIK0NE9BZnZCSqYpFyh6rGTA_Bgrv8S4Rj4YgAiT95IMolW65f7QQBVRUNdjJxTwgv6FsTozNIy7FwEsTf1QQeO7de3JWQIyTGkJdrsdc2aR5wh-bX2CSiqq1dIjiIzIWGe-RahfiyajiP1KoPxd6wFwUGLHBNvyvzRiJpCBa_GAU51hZGlDwWo8sk6VLIYBZHlPNlre-1YDArahZNlKTFsuYn5vhhypZsIxLGpg43tARx9JKQm96d69qLJLiOIZpNOAc"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- The "Board" Section - Visual Focal Point -->
+<section class="py-24 bg-tertiary text-on-tertiary">
+<div class="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto flex flex-col lg:flex-row items-center gap-16">
+<div class="lg:w-1/2">
+<h2 class="font-display-lg text-display-lg mb-8">Purity in Performance</h2>
+<p class="font-body-md text-body-md text-on-tertiary-container mb-8 leading-relaxed">
+                        Our interface is stripped of distractions. No flashing lights, no cluttered sidebars. Just the board, the pieces, and your mind. We believe the environment where you learn dictates the depth of your thinking.
+                    </p>
+<ul class="space-y-6">
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-outline">check_circle</span>
+<div>
+<h4 class="font-title-sm text-title-sm mb-1">Focus Mode</h4>
+<p class="text-on-tertiary-container text-sm">Zen-inspired UI that removes all non-essential metadata during critical matches.</p>
+</div>
+</li>
+<li class="flex items-start gap-4">
+<span class="material-symbols-outlined text-outline">check_circle</span>
+<div>
+<h4 class="font-title-sm text-title-sm mb-1">Haptic Precision</h4>
+<p class="text-on-tertiary-container text-sm">Subtle soundscapes and tactile feedback that mimic the physical weight of ivory and wood.</p>
+</div>
+</li>
+</ul>
+</div>
+<div class="lg:w-1/2 w-full aspect-square bg-white shadow-2xl p-4 flex items-center justify-center overflow-hidden">
+<!-- A stylized chessboard visualization -->
+<div class="w-full h-full grid grid-cols-8 grid-rows-8 border border-outline">
+<!-- Chessboard pattern logic via JS to keep HTML clean -->
+<div class="w-full h-full bg-[#E5E5E5]"></div><div class="w-full h-full bg-[#6B6B6B]"></div>
+<div class="w-full h-full bg-[#E5E5E5]"></div><div class="w-full h-full bg-[#6B6B6B]"></div>
+<div class="w-full h-full bg-[#E5E5E5]"></div><div class="w-full h-full bg-[#6B6B6B]"></div>
+<div class="w-full h-full bg-[#E5E5E5]"></div><div class="w-full h-full bg-[#6B6B6B]"></div>
+<div class="w-full h-full bg-[#6B6B6B]"></div><div class="w-full h-full bg-[#E5E5E5]"></div>
+<div class="w-full h-full bg-[#6B6B6B]"></div><div class="w-full h-full bg-[#E5E5E5]"></div>
+<div class="w-full h-full bg-[#6B6B6B]"></div><div class="w-full h-full bg-[#E5E5E5]"></div>
+<div class="w-full h-full bg-[#6B6B6B]"></div><div class="w-full h-full bg-[#E5E5E5]"></div>
+<div class="w-full h-full bg-[#E5E5E5]"></div><div class="w-full h-full bg-[#6B6B6B]"></div>
+<div class="w-full h-full bg-[#E5E5E5]"></div><div class="w-full h-full bg-[#6B6B6B]"></div>
+<div class="w-full h-full bg-[#E5E5E5]"></div><div class="w-full h-full bg-[#6B6B6B]"></div>
+<div class="w-full h-full bg-[#E5E5E5]"></div><div class="w-full h-full bg-[#6B6B6B]"></div>
+<!-- Rows omitted for brevity but visual enough -->
+<div class="col-span-8 row-span-5 bg-white flex items-center justify-center">
+<img class="h-4/5 object-contain" data-alt="A macro photograph of a singular black chess knight piece, its elegant curves and fine details visible under a soft top-down light that creates dramatic shadows. The background is a clean, neutral gray, emphasizing the sculptural beauty of the piece." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi8mHqc-xLexpbquZjbzC_RVFwEugppmojjHs7dp0fXsOq2J-sdfD8TFKHvucJ6p-AjMhVMtXDUDOWc9FllxzI6NbCqskBN645jDPlid9jb0ew15srC3N-WfDt18xxFcYK1YvYtxwIDYdsKSP8hRHSge35VsEdRQuDukCqTqaxnZWU9bd_0vao27pp0LVPUmT5wwu82zzrhsSjSDdgMe2SWaayf3-q3ACQQQNelJOhFJjWevxYtH2EppkFQrEr2buTpFT6DA8xUfo"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / CTA -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-white">
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">Begin Your Grandmaster Journey</h2>
+<p class="text-on-surface-variant mb-10">Subscribe to our weekly analysis of legendary matches and stay updated on upcoming masterclasses.</p>
+<form class="flex flex-col md:flex-row gap-4 border-b border-outline pb-2">
+<input class="flex-grow bg-transparent border-none focus:ring-0 font-body-md placeholder:text-outline py-2" placeholder="Email address" type="email"/>
+<button class="font-label-mono text-label-mono uppercase tracking-widest text-primary hover:opacity-60 transition-opacity whitespace-nowrap" type="submit">Join Academy</button>
+</form>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface border-t border-outline-variant full-width bottom-0">
+<div class="w-full py-12 px-margin-desktop max-w-max-width mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="flex flex-col gap-2">
+<div class="font-headline-md text-headline-md text-primary">Chess Academy</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">© 2024 Chess Academy. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline transition-all" href="#">About Us</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline transition-all" href="#">Privacy Policy</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline transition-all" href="#">Terms of Service</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:underline transition-all" href="#">Contact</a>
+</div>
+<div class="flex gap-4">
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">share</span>
+</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">forum</span>
+</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple micro-interaction for the navigation active state
+        document.querySelectorAll('nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                document.querySelectorAll('nav a').forEach(l => {
+                    l.classList.remove('text-primary', 'border-b-2', 'border-primary', 'pb-1');
+                    l.classList.add('text-on-surface-variant');
+                });
+                this.classList.add('text-primary', 'border-b-2', 'border-primary', 'pb-1');
+                this.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>
